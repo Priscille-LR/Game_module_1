@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link
+      href="https://use.fontawesome.com/releases/v5.0.1/css/all.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Wildlife fighterz</title>
+  </head>
+
+  <body>
+    <div class="game-landing">
+      <button class="play-button">
+        <img src="./assets/play.png" alt="" />
+      </button>
+    </div>
+
+    <div class="game-intro">
+      <div class="greetings-controls">
+        <div class="greetings">
+          <h1>Welcome, Wildlife Fighter !</h1>
+          <p>
+            As part of the anti-poaching brigade, your objective - if not your
+            <em>reason to live</em> - is to protect wildlife. Shoot as many
+            poachers as you can to prevent them from killing animals. Don't
+            shoot animals obviously (do we actually need to mention that??)
+          </p>
+        </div>
+        <div class="controls">
+          <h2>Controls</h2>
+          <div class="controls-content">
+            <div>
+              <p>Use your mouse to aim...</p>
+              <p>...and click to fire bullets !</p>
+            </div>
+
+            <img
+              class="target"
+              src="./assets/target.png"
+              alt=""
+            />
+          </div>
+          <button class="start-button">Start Game & Save Wildlife</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-board">
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <div class="game-over">
+      <img src="./assets/lion-cry.png" alt="" class="lion-cry" />
+      <div class="buttons">
+        <button class="exit-button">Exit</button>
+        <button class="retry-button">
+          <img src="./assets/try-again.png" alt="" />
+        </button>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/Target.js"></script>
+    <script type="text/javascript" src="js/Characters.js"></script>
+    <script type="text/javascript" src="js/Game.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+  </body>
+</html>

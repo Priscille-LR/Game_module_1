@@ -1,0 +1,180 @@
+:root {
+  --background-pale-yellow: #fffbe9;
+  --background-yellow: #f1df93;
+  --background-blue: #bee4ff;
+  --button-orange: #ff914d;
+  --main-titles-green: #75924b;
+  --main-titles-brown: #86460e;
+  --paragraph-dark-green: #224b22;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+button {
+  border: none;
+}
+
+h1,
+h2 {
+  font-family: 'One Trick Pony OT', sans-serif;
+  color: var(--main-titles-green);
+}
+
+.game-landing,
+.game-intro,
+.game-board,
+.game-over {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-landing,
+.game-intro,
+.game-over {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+
+.start-button,
+.exit-button,
+.retry-button {
+  font-family: 'One Trick Pony OT', sans-serif;
+  background-color: var(--button-orange);
+  color: white;
+  border-radius: 5px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* GAME LANDING */
+
+.game-landing {
+  background-image: url('../assets/landing.png');
+  background-color: var(--background-pale-yellow);
+}
+
+.play-button {
+  position: fixed;
+  top: 60%;
+  left: 47%;
+  background-color: transparent;
+  text-align: center;
+}
+
+.play-button img {
+  width: 50px;
+  height: 50px;
+}
+
+/* GAME INTRO */
+
+.game-intro {
+  background-image: url('../assets/intro-bg.png');
+}
+
+.game-intro h1 {
+  font-size: 48px;
+}
+
+.game-intro h2 {
+  font-size: 36px;
+}
+
+.game-intro p {
+  font-family: 'verdana', sans-serif;
+  font-size: 18px;
+  color: var(--paragraph-dark-green);
+}
+
+.greetings-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30rem;
+  text-align: center;
+}
+
+.greetings {
+  width: 50%;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin: 2rem 0;
+}
+
+.controls-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.controls-content p {
+  margin: 1rem 0;
+  text-align: justify;
+}
+
+.target {
+  width: 100px;
+  height: 100px;
+}
+
+.start-button {
+  font-size: 36px;
+}
+
+/* GAME BOARD */
+
+.game-board {
+  cursor: none;
+}
+
+/* GAME OVER */
+
+.game-over {
+  flex-direction: column;
+  background-image: url('../assets/game-over-blank.png');
+  background-color: var(--background-pale-yellow);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.lion-cry {
+  width: 20%;
+  margin-top: 10rem;
+}
+
+.exit-button,
+.retry-button {
+  width: 200px;
+  font-size: 48px;
+}
+
+.exit-button {
+  margin-left: 5rem;
+}
+
+.retry-button {
+  margin-right: 5rem;
+}
+
+.retry-button img {
+  width: 50px;
+  height: 50px;
+}
