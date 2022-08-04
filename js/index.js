@@ -27,9 +27,16 @@ let landing = document.querySelector('.game-landing');
 let startscreen = document.querySelector('.game-intro');
 let gameOverScreen = document.querySelector('.game-over');
 
+//score board
+function createScorePanel() {
+  ctx.font = '36px One Trick Pony OT';
+  ctx.fillStyle = '#FF914D';
+  ctx.fillText(`Animals saved: ${currentGame.animalsSaved}`, 100, 50);
+  ctx.fillText(`Poachers killed: ${currentGame.poachersKilled}`, 100, 100);
+  ctx.fillText(`Score: ${currentGame.determineScore()}`, 100, 150);
+}
 
 //listeners
-
 window.onload = () => {
   startscreen.style.display = 'none';
   canvas.style.display = 'none';
@@ -56,11 +63,6 @@ document.querySelector('.retry-button').onclick = () => {
     startGame();
 };
 
-// document.addEventListener('keydown', (e) => {
-//   let direction = e.code;
-//   //currentGame.target.moveTarget(direction);
-// });
-
 canvas.addEventListener('mousemove', (e) => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -77,10 +79,16 @@ canvas.addEventListener('click', (e) => {
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
 
-  //kill poacher
+  //kill poacher or animal onCLick
   currentGame.poachers.forEach((poacher) => {
-    if(poacher.isTouched(x, y)) {
-        poacher.killPoacher()
+    if(poacher.detectCollision(x, y, 1 , 1)) {
+        poacher.killCharacter()
+    }
+  })
+
+  currentGame.animals.forEach((animal) => {
+    if(animal.detectCollision(x, y,  1 , 1)) {
+        animal.killCharacter()
     }
   })
 });
@@ -99,17 +107,17 @@ function startGame() {
   currentGame.drawBackground();
   currentGame.target.drawTarget();
 
-  updateCanvas();
+  resetSpeed();
+  mainLoop();
 }
 
 
-function updateCanvas() {
+function mainLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   currentGame.drawBackground();
   currentGame.target.drawTarget();
 
-  poacherFrequency++
-  animalFrequency++
+  updateSpeed()
 
   updatePoachers()
 
@@ -120,25 +128,46 @@ function updateCanvas() {
   checkIfGameOver()
 
     if(!isGameOver) {
-        intervalId = requestAnimationFrame(updateCanvas);
+        intervalId = requestAnimationFrame(mainLoop);
     } else if(isGameOver) {
         gameOver()
     }
 }
 
-//helper function
-function randomIntFromInterval(min, max) { // min and max included 
-    return Math.floor(Math.random() * (max - min + 1) + min)
+let speedFrequency = 0
+let initialSpeed = 0
+function updateSpeed(){
+    if (speedFrequency % 3000 === 0){
+        initialSpeed++
+    }
+    speedFrequency++
 }
 
-//draw poachers ~ every 5 seconds
+function resetSpeed() {
+    speedFrequency = 0
+    initialSpeed = 0
+}
+
+
+let timer = 0
 function updatePoachers() {
-  if (poacherFrequency % 500 === 1 && currentGame.poachers.length < 5) {
+    poacherFrequency++
+  if (poacherFrequency % 200 === 0) {
     let randomX = randomIntFromInterval(middle, right - 120)
     let newPoacher = new Poacher(randomX, -400, 120, 150);
     currentGame.poachers.push(newPoacher);
   }
+
   currentGame.poachers.forEach((poacher) => poacher.handleCharacter());
+
+  if(timer % 60 === 0 && timer !== 0 && currentGame.poachers.length != 0) {
+    currentGame.poachers.sort(() => 0.5 - Math.random())
+    .slice(0, 3)
+    .forEach((poacher) => poacher.shootBullet())
+  }
+
+  currentGame.poachers.forEach((poacher) => poacher.drawBulletWhenShooting())
+    timer++
 }
 
 const images = [
@@ -151,24 +180,16 @@ const images = [
 
 //draw animals
 function updateAnimals() {
-  if (animalFrequency % 300 === 0 && currentGame.animals.length < 10) {
+    animalFrequency++
+  if (animalFrequency % 200 === 0) {
     let randomAnimalImg = images[(currentGame.animals.length + currentGame.score) % images.length];
-    let randomX = currentGame.animals.length % 2 === 0 ? randomIntFromInterval(left, middle - 130) : randomIntFromInterval(right, canvas.width - 130)
+    let randomX = currentGame.animals.length % 2 === 0 ? randomIntFromInterval(left, middle - 130) : randomIntFromInterval(right, canvas.width - 130) //randomise animals display
     newAnimal = new Animal(randomX, -400, 120, 130, randomAnimalImg);
     currentGame.animals.push(newAnimal);
-    console.log(currentGame.animals);
-   
   }
   currentGame.animals.forEach((animal) => animal.handleCharacter());
 }
 
-function createScorePanel() {
-  ctx.font = '36px One Trick Pony OT';
-  ctx.fillStyle = '#FF914D';
-  ctx.fillText(`Animals saved: ${currentGame.animalsSaved}`, 100, 50);
-  ctx.fillText(`Poachers killed: ${currentGame.poachersKilled}`, 100, 100);
-  ctx.fillText(`Score: ${currentGame.animalsSaved * 3 + currentGame.poachersKilled * 10}`, 100, 150);
-}
 
 function checkIfGameOver() {
     if(currentGame.poachersKilled < 0 || currentGame.animalsSaved < 0) {
@@ -181,4 +202,10 @@ function gameOver() {
   gameOverScreen.style.display = 'flex';
   canvas.style.display = 'none';
   isGameOver = false;
+}
+
+
+//helper function
+function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }

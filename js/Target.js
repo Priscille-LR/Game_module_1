@@ -16,23 +16,6 @@ class Target {
     ctx.clearRect(this.x, this.y, this.width, this.height);
     this.x = (x - this.width / 2)
     this.y = (y -  this.height / 2)
-    // switch (e) {
-    //   case 'ArrowRight':
-    //     if (this.x > 0) {
-    //       this.x += 20;
-    //     }
-    //     break;
-
-    //   case 'ArrowLeft':
-    //     if (this.x < canvas.width) {
-    //       this.x -= 20;
-    //     }
-    //     break;
-
-    //   default:
-    //     this.x -= 0;
-    //     break;
-    // }
     ctx.drawImage(this.target, this.x , this.y , this.width, this.height);
   }
 }

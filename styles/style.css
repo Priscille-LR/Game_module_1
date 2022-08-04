@@ -41,8 +41,6 @@ h2 {
   height: 100vh;
 }
 
-
-
 .start-button,
 .exit-button,
 .retry-button {
@@ -64,7 +62,7 @@ h2 {
 .play-button {
   position: fixed;
   top: 60%;
-  left: 47%;
+  left: 47.5%;
   background-color: transparent;
   text-align: center;
 }
@@ -110,7 +108,7 @@ h2 {
 .controls {
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 30%;
   margin: 2rem 0;
 }
 
