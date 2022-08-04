@@ -1,6 +1,6 @@
 # Wildlife Fighterz
 
-[Click here to see deployed game](http://github.com)
+[Click here to see deployed game](https://priscille-lr.github.io/Wildlife_Fighterz/)
 
 ## Description
 WARNING: this game is not for the faint of heart! 
