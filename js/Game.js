@@ -11,7 +11,7 @@ class Game {
 
     drawBackground() {
         let background = new Image();
-        background.src = '../assets/canvas.png';
+        background.src = './assets/images/canvas.png';
         ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
     }
 

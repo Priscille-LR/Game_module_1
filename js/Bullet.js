@@ -14,11 +14,7 @@ class Bullet {
     ctx.drawImage(this.bullet, this.x, this.y, this.width, this.height);
   }
 
-  remove(){
-    console.group()
-    console.log("removedBullet")
-    let t = currentGame.bullets.splice(currentGame.bullets.indexOf(this), 1)
-    console.log(" => " + t)
-    console.groupEnd()
+  removeBullet(){
+    currentGame.bullets.splice(currentGame.bullets.indexOf(this), 1)
   }
 }

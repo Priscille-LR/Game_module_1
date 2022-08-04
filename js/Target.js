@@ -5,7 +5,7 @@ class Target {
     this.width = 100;
     this.height = 100;
     this.target = new Image();
-    this.target.src = '../assets/target.png'
+    this.target.src = './assets/images/target.png'
   }
 
   drawTarget() {

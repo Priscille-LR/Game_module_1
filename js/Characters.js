@@ -1,8 +1,8 @@
-let poacherLeft = '../assets/poacher-left.png';
-let poacherRight = '../assets/poacher-right.png';
+let poacherLeft = './assets/images/poacher-left.png';
+let poacherRight = './assets/images/poacher-right.png';
 
-let bulletLeft = '../assets/bullet-left.png';
-let bulletRight = '../assets/bullet-right.png';
+let bulletLeft = './assets/images/bullet-left.png';
+let bulletRight = './assets/images/bullet-right.png';
 
 
 class Animal {
@@ -36,7 +36,9 @@ class Animal {
             const isShotByBullet = this.checkIfShotByBullet()
             if(isShotByBullet) {
                 this.hasBeenShotByBullet = true;
-                this.character.src = '../assets/stars.png'
+                this.character.src = './assets/images/stars.png'
+                twinkle = new Sound("./assets/sounds/twinkle.mp3")
+                twinkle.play()
             }
         }
         ctx.drawImage(this.character, this.x, this.y, this.width, this.height)
@@ -70,7 +72,7 @@ class Animal {
     return currentGame.bullets.map((bullet) => {
         let isCollision = this.detectCollision(bullet.x, bullet.y, bullet.height, bullet.width)
         if(isCollision){
-            bullet.remove()
+            bullet.removeBullet()
         }
         return isCollision
     }).includes(true);
@@ -97,7 +99,7 @@ class Poacher extends Animal {
 
   handleCharacter() {
     if (this.hasBeenShotByPlayer) {
-      this.character.src = '../assets/poacher-killed.png'; //display poacher killed if dead and make it blink
+      this.character.src = './assets/images/poacher-killed.png'; //display poacher killed if dead and make it blink
       this.killedFrequency++;
       if (this.killedFrequency % 30 === 0) {
         this.isDisplayed = !this.isDisplayed;

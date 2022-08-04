@@ -27,7 +27,9 @@ Wildlife Fighterz is a game where the player's objective is to save animals by s
 ### Index.js
 - DOM logic + event listeners
 - startGame()
-- updateCanvas()
+- mainLoop()
+- updateSpeed()
+- resetSpeed()
 - updatePoachers()
 - updateAnimals()
 - createScorePanel()
@@ -61,8 +63,11 @@ Wildlife Fighterz is a game where the player's objective is to save animals by s
 
 ### Bullet.js
 - drawBullet()
+- removeBullet()
 
-
+### Sound.js
+- play()
+- pause()
 
 ## States y States Transitions
 - Landing screen
@@ -70,9 +75,6 @@ Wildlife Fighterz is a game where the player's objective is to save animals by s
 - Game screen
 - Game Over screen
 
-## Tasks
-
-
 ## Links
-- [Github repository Link](http://github.com)
-- [Deployment Link](https://github.com/Priscille-LR/Wildlife_Fighterz)
+- [Github repository Link](https://github.com/Priscille-LR/Wildlife_Fighterz)
+- [Deployment Link](https://priscille-lr.github.io/Wildlife_Fighterz/)

@@ -10,6 +10,12 @@ canvas.height = window.innerHeight;
 let currentGame;
 let currentTarget;
 
+//sounds
+let bgMusic;
+let impactSound;
+let twinkle;
+let gameOverSound;
+
 let intervalId = 0;
 let isGameOver = false;
 
@@ -82,12 +88,16 @@ canvas.addEventListener('click', (e) => {
   //kill poacher or animal onCLick
   currentGame.poachers.forEach((poacher) => {
     if(poacher.detectCollision(x, y, 1 , 1)) {
+        impactSound = new Sound("./assets/sounds/impact.mp3")
+        impactSound.play()
         poacher.killCharacter()
     }
   })
 
   currentGame.animals.forEach((animal) => {
     if(animal.detectCollision(x, y,  1 , 1)) {
+        impactSound = new Sound("./assets/sounds/impact.mp3")
+        impactSound.play()
         animal.killCharacter()
     }
   })
@@ -103,6 +113,9 @@ function startGame() {
   currentGame = new Game();
   currentTarget = new Target();
   currentGame.target = currentTarget;
+
+  bgMusic = new Sound("./assets/sounds/jungle-music.mp3")
+  bgMusic.play()
 
   currentGame.drawBackground();
   currentGame.target.drawTarget();
@@ -136,6 +149,7 @@ function mainLoop() {
 
 let speedFrequency = 0
 let initialSpeed = 0
+
 function updateSpeed(){
     if (speedFrequency % 3000 === 0){
         initialSpeed++
@@ -171,11 +185,11 @@ function updatePoachers() {
 }
 
 const images = [
-    '../assets/elephant.png',
-    '../assets/giraffe.png',
-    '../assets/gorilla.png',
-    '../assets/lion.png',
-    '../assets/zebra.png',
+    './assets/images/elephant.png',
+    './assets/images/giraffe.png',
+    './assets/images/gorilla.png',
+    './assets/images/lion.png',
+    './assets/images/zebra.png',
 ];
 
 //draw animals
@@ -199,6 +213,11 @@ function checkIfGameOver() {
 
 function gameOver() {
   cancelAnimationFrame(intervalId);
+
+  bgMusic.stop()
+  gameOverSound = new Sound("./assets/sounds/game-over.mp3")
+  gameOverSound.play()
+
   gameOverScreen.style.display = 'flex';
   canvas.style.display = 'none';
   isGameOver = false;

@@ -55,27 +55,25 @@ h2 {
 /* GAME LANDING */
 
 .game-landing {
-  background-image: url('../assets/landing.png');
+  background-image: url('../assets/images/landing-new.png');
   background-color: var(--background-pale-yellow);
 }
 
 .play-button {
-  position: fixed;
-  top: 60%;
-  left: 47.5%;
+  width: 15%;
+  height: 15%;
+  padding: 2rem;
   background-color: transparent;
-  text-align: center;
 }
 
 .play-button img {
-  width: 50px;
-  height: 50px;
+  width: 100%;
 }
 
 /* GAME INTRO */
 
 .game-intro {
-  background-image: url('../assets/intro-bg.png');
+  background-image: url('../assets/images/intro-bg.png');
 }
 
 .game-intro h1 {
@@ -143,7 +141,7 @@ h2 {
 
 .game-over {
   flex-direction: column;
-  background-image: url('../assets/game-over-blank.png');
+  background-image: url('../assets/images/game-over-blank.png');
   background-color: var(--background-pale-yellow);
 }
 
