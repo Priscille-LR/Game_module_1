@@ -18,8 +18,6 @@ Wildlife Fighterz is a game where the player's objective is to save animals by s
 ## Backlog
 - Add sound effects
 - Increase difficulty
-- Add badges-winning logic 
-- Add name input
 
 
 ## Data structure
@@ -74,6 +72,12 @@ Wildlife Fighterz is a game where the player's objective is to save animals by s
 - Instructions screen
 - Game screen
 - Game Over screen
+
+## TODO
+- Fix bugs (overlapping elements)
+- Update score 
+- Add badges-winning logic 
+- Add name input?
 
 ## Links
 - [Github repository Link](https://github.com/Priscille-LR/Wildlife_Fighterz)

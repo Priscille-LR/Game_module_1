@@ -116,6 +116,7 @@ function startGame() {
 
   bgMusic = new Sound("./assets/sounds/jungle-music.mp3")
   bgMusic.play()
+  bgMusic.loop = true
 
   currentGame.drawBackground();
   currentGame.target.drawTarget();
@@ -151,7 +152,7 @@ let speedFrequency = 0
 let initialSpeed = 0
 
 function updateSpeed(){
-    if (speedFrequency % 3000 === 0){
+    if (speedFrequency % 2000 === 0){
         initialSpeed++
     }
     speedFrequency++

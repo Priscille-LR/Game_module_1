@@ -12,5 +12,7 @@ class Sound {
     this.stop = function () {
       this.sound.pause();
     };
+    this.sound.loop = false
+    
   }
 }
